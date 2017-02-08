@@ -6,28 +6,10 @@ import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import './index.css';
 
-import { Router, Route, hashHistory } from 'react-router';
+// import { Router, Route, hashHistory } from 'react-router';
+import reducers from './reducers';
 
-const initialState = {
-  traks: [
-    'smells', 'jass'
-  ],
-  playlist:[
-    'home playlist', 'work'
-   ]
-};
-
-function playList(state = initialState.traks, action) {
-  if(action.type === 'ADD_TRACK'){
-    return [
-      ...state,
-      action.payload
-    ]
-  }
-  return state;
-}
-
-const store = createStore(playList, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()) ;
+const store = createStore(reducers, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()) ;
 
 ReactDOM.render(
   <Provider store={store}>
